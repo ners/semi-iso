@@ -2,6 +2,7 @@
 
 ### Haskell ###
 dist
+dist-newstyle
 cabal-dev
 *.o
 *.hi
@@ -12,7 +13,6 @@ cabal-dev
 .cabal-sandbox/
 cabal.sandbox.config
 cabal.config
-
 
 ### Emacs ###
 # -*- mode: gitignore; -*-

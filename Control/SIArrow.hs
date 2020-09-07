@@ -90,7 +90,7 @@ class (Products cat, Coproducts cat, CatPlus cat) => SIArrow cat where
 
     {-# MINIMAL (siarr | sipure), sibind #-}
 
-instance MonadPlus m => SIArrow (Kleisli m) where
+instance (MonadPlus m, MonadFail m) => SIArrow (Kleisli m) where
     siarr ai = Kleisli $ either fail return . apply ai
     sibind ai = Kleisli $ \a -> either fail (($ a) . runKleisli) $ apply ai a
 

@@ -4,6 +4,7 @@
 {-# LANGUAGE ViewPatterns #-}
 {-# LANGUAGE PatternSynonyms #-}
 {-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE FlexibleInstances #-}
 {- |
 Module      :  Control.Lens.SemiIso
 Description :  Semi-isomorphisms.
@@ -314,12 +315,12 @@ attemptUn_ :: ASemiIso s t a b -> SemiIso s (Maybe t) a b
 attemptUn_ ai = rmap (fmap discard) . attemptUn ai
 
 -- | Monadic counterpart of 'foldl1' (or non-empty list counterpart of 'foldlM').
-foldlM1 :: Monad m => (a -> a -> m a) -> [a] -> m a
+foldlM1 :: MonadFail m => (a -> a -> m a) -> [a] -> m a
 foldlM1 f (x:xs) = foldlM f x xs
 foldlM1 _ []     = fail "foldlM1: empty list"
 
 -- | Monadic counterpart of 'foldr1' (or non-empty list counterpart of 'foldrM').
-foldrM1 :: Monad m => (a -> a -> m a) -> [a] -> m a
+foldrM1 :: MonadFail m => (a -> a -> m a) -> [a] -> m a
 foldrM1 _ [x]    = return x
 foldrM1 f (x:xs) = foldrM1 f xs >>= f x
 foldrM1 _ []     = fail "foldrM1: empty list"
@@ -443,3 +444,6 @@ bifoldl1_ ai = semiIso (uf ai) (f ai)
   where
     f = foldlM1 . curry . unapply
     uf = unfoldlM1 . apply
+
+instance MonadFail (Either String) where
+  fail = Left
