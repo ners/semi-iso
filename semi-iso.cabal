@@ -64,6 +64,7 @@ library
   exposed-modules:     Control.Lens.SemiIso
                        Control.Lens.Internal.SemiIso
                        Control.SIArrow
+                       Control.Tuple.Morph
                        Control.Category.Reader
                        Control.Category.Structures
                        Data.Profunctor.Exposed
