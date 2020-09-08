@@ -22,9 +22,9 @@ module Control.Tuple.Morph
     ( morphTuples
     , morphReorderTuples
     , morphPickTuples
-    , TupleMorphable
-    , CheckListsForTupleIso
-    , ReorderList
+    , TupleMorphable(..)
+    , CheckListsForTupleIso(..)
+    , ReorderList(..)
     ) where
 
 import Data.Proxy
