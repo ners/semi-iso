@@ -1,16 +1,19 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 {- |
 Module      :  Control.Lens.Internal.SemiIso
 Description :  Internals of a SemiIso.
 Copyright   :  (c) Paweł Nowak
 License     :  MIT
 
-Maintainer  :  Paweł Nowak <pawel834@gmail.com>
+Maintainer  :  ners <ners@gmx.ch>
 Stability   :  experimental
 -}
 module Control.Lens.Internal.SemiIso where
 
+import Control.Applicative
 import Control.Monad
 import Data.Profunctor
 import Data.Profunctor.Exposed
@@ -67,3 +70,18 @@ instance Choice (Retail s t) where
 instance Exposed (Either String) (Retail s t) where
     expose (Retail l r) = Retail (>>= l) r
     merge (Retail l r) = Retail l (join . r)
+
+instance MonadFail (Either String) where
+    fail = Left
+
+instance Alternative (Either String) where
+    empty = Left ""
+    Left _ <|> b = b
+    x <|> _ = x
+
+#if MIN_VERSION_base(4,18,0)
+instance MonadPlus (Either String) where
+    mzero = Left ""
+    mplus (Left _) r = r
+    mplus b _ = b
+#endif

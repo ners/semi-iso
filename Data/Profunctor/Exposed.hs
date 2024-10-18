@@ -6,7 +6,7 @@ Description :  Exposes Kleisli category structure beneath a profunctor.
 Copyright   :  (c) Paweł Nowak
 License     :  MIT
 
-Maintainer  :  Paweł Nowak <pawel834@gmail.com>
+Maintainer  :  ners <ners@gmx.ch>
 Stability   :  experimental
 -}
 module Data.Profunctor.Exposed where

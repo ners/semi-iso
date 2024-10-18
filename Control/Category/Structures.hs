@@ -7,7 +7,7 @@ Description :  Structures in a category.
 Copyright   :  (c) Paweł Nowak
 License     :  MIT
 
-Maintainer  :  Paweł Nowak <pawel834@gmail.com>
+Maintainer  :  ners <ners@gmx.ch>
 Stability   :  experimental
 
 This module defines some basic structures in a category in a more fine-grained

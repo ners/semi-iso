@@ -1,7 +1,8 @@
+cabal-version:       3.0
 name:                semi-iso
-version:             1.0.0.0
+version:             1.1.0.0
 synopsis:            Weakened partial isomorphisms, reversible computations.
-description:         
+description:
   Semi-isomorphisms are partial isomorphisms with weakened iso laws. They are a basic
   building block of reversible computations. And they work with Iso and Prism from @lens@!
   .
@@ -47,14 +48,12 @@ description:
   transformer, but for categories. The next version will include some more transformers and
   mtl-style classes.
 license:             MIT
-license-file:        LICENSE
+license-file:        LICENSE.md
 author:              Paweł Nowak
-maintainer:          Paweł Nowak <pawel834@gmail.com>
+maintainer:          ners <ners@gmx.ch>
 copyright:           Paweł Nowak 2014
 category:            Control, Data
 build-type:          Simple
-cabal-version:       >=1.11
-Tested-with:         GHC==8.0.2, GHC==8.2.2, GHC==8.4.3, GHC==8.6.1
 
 source-repository head
   type:     git
@@ -68,10 +67,10 @@ library
                        Control.Category.Reader
                        Control.Category.Structures
                        Data.Profunctor.Exposed
-  build-depends:       base          >= 4.9 && <4.15
+  build-depends:       base          >= 4.9 && <5
                      , profunctors   == 5.*
                      , transformers
-                     , lens          == 4.*
+                     , lens          >= 4 && <6
                      , semigroupoids
   default-language:    Haskell2010
   ghc-options:         -Wall
