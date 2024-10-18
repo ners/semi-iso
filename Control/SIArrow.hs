@@ -9,7 +9,7 @@ Description :  Categories of reversible computations.
 Copyright   :  (c) Paweł Nowak
 License     :  MIT
 
-Maintainer  :  Paweł Nowak <pawel834@gmail.com>
+Maintainer  :  ners <ners@gmx.ch>
 Stability   :  experimental
 
 Categories of reversible computations.

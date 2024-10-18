@@ -11,7 +11,7 @@ Description :  Semi-isomorphisms.
 Copyright   :  (c) Paweł Nowak
 License     :  MIT
 
-Maintainer  :  Paweł Nowak <pawel834@gmail.com>
+Maintainer  :  ners <ners@gmx.ch>
 Stability   :  experimental
 
 Semi-isomorphisms were motivated by reversible parsing/pretty printing. For example
@@ -466,6 +466,3 @@ bifoldl1_ ai = semiIso (uf ai) (f ai)
   where
     f = foldlM1 . curry . unapply
     uf = unfoldlM1 . apply
-
-instance MonadFail (Either String) where
-  fail = Left
